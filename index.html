@@ -18,7 +18,9 @@
           <h1>Caustic Lens Optimization</h1>
           <p class="hero-text">
             A compact result page for presenting the final images, optimization
-            GIF, captions, and the report-ready interpretation paragraph.
+            GIF, captions, and the report-ready interpretation paragraph. This
+            version keeps close to the original teammate logic while extending
+            the training to a more presentation-ready result set.
           </p>
         </div>
         <div class="hero-meta">
@@ -28,7 +30,7 @@
           </div>
           <div class="meta-card">
             <span class="meta-label">Resolution</span>
-            <strong>N = 72</strong>
+            <strong>N = 64</strong>
           </div>
           <div class="meta-card">
             <span class="meta-label">Epochs</span>
@@ -36,7 +38,7 @@
           </div>
           <div class="meta-card">
             <span class="meta-label">Parameters</span>
-            <strong>lr = 0.01, TV = 0.005</strong>
+            <strong>lr = 0.01, TV = 0.01</strong>
           </div>
         </div>
       </header>
@@ -138,18 +140,18 @@
             <p>
               With the learning rate set to 0.01, the caustic optimization is
               able to recover the main strokes of the target pattern in a stable
-              way. The main result figure and the optimization GIF jointly show
-              that the solver first establishes the large-scale light
-              distribution and then progressively sharpens the target strokes.
-              The 3D surface figure indicates that the learned lens profile is a
-              continuous and interpretable refractive structure instead of
-              irregular noise. Meanwhile, the difference heatmap shows that the
-              residual errors mainly appear near edges and high-curvature
-              regions, which is consistent with the finite grid resolution,
-              Gaussian spot approximation, and simplified refraction model used
-              in this demo. Overall, the results support the central claim that
-              differentiable optimization can invert a desired caustic pattern
-              into a structured lens surface.
+              way after 300 epochs. The main result figure and the optimization
+              GIF jointly show that the solver first establishes the large-scale
+              light distribution and then progressively sharpens the target
+              strokes. The 3D surface figure indicates that the learned lens
+              profile is a continuous and interpretable refractive structure
+              instead of irregular noise. Meanwhile, the difference heatmap
+              shows that the residual errors mainly appear near edges and
+              high-curvature regions, which is consistent with the finite grid
+              resolution, Gaussian spot approximation, and simplified refraction
+              model used in this demo. Overall, the results support the central
+              claim that differentiable optimization can invert a desired
+              caustic pattern into a structured lens surface.
             </p>
           </div>
         </section>
