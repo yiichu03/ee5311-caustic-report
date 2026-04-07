@@ -148,6 +148,11 @@ main {
   border: 1px solid rgba(41, 26, 19, 0.08);
 }
 
+.hero-media {
+  width: min(100%, 980px);
+  margin: 0 auto;
+}
+
 .feature-figure figcaption,
 .media-card figcaption {
   margin-top: 14px;
@@ -169,7 +174,8 @@ main {
 }
 
 .media-card-wide img {
-  width: 100%;
+  width: min(100%, 920px);
+  margin: 0 auto;
 }
 
 .card-grid {
@@ -193,29 +199,6 @@ main {
   margin: 0;
   font-size: 1.03rem;
   line-height: 1.9;
-}
-
-.download-list {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 14px;
-}
-
-.download-list a {
-  display: inline-flex;
-  align-items: center;
-  min-height: 48px;
-  padding: 0 16px;
-  border-radius: 999px;
-  background: #fff7ef;
-  border: 1px solid rgba(213, 90, 31, 0.22);
-  color: var(--text);
-  text-decoration: none;
-  font-weight: 600;
-}
-
-.download-list a:hover {
-  background: #fff0e1;
 }
 
 .footer {
@@ -251,7 +234,4 @@ main {
     grid-template-columns: 1fr;
   }
 
-  .download-list {
-    flex-direction: column;
-  }
 }
