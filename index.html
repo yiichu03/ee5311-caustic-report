@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>EE5311 Caustic Lens Design</title>
+    <meta
+      name="description"
+      content="Static deliverable page for EE5311 caustic lens optimization results."
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="page-shell">
+      <header class="hero">
+        <div class="hero-copy">
+          <p class="eyebrow">EE5311 CA1 Deliverable Page</p>
+          <h1>Caustic Lens Optimization</h1>
+          <p class="hero-text">
+            A compact result page for presenting the final images, optimization
+            GIF, captions, and the report-ready interpretation paragraph.
+          </p>
+        </div>
+        <div class="hero-meta">
+          <div class="meta-card">
+            <span class="meta-label">Focus Pattern</span>
+            <strong>EE5311</strong>
+          </div>
+          <div class="meta-card">
+            <span class="meta-label">Resolution</span>
+            <strong>N = 72</strong>
+          </div>
+          <div class="meta-card">
+            <span class="meta-label">Epochs</span>
+            <strong>300</strong>
+          </div>
+          <div class="meta-card">
+            <span class="meta-label">Parameters</span>
+            <strong>lr = 0.01, TV = 0.005</strong>
+          </div>
+        </div>
+      </header>
+
+      <main>
+        <section class="panel lead-panel">
+          <div class="panel-head">
+            <p class="section-kicker">Overview</p>
+            <h2>Main Result</h2>
+          </div>
+          <figure class="feature-figure">
+            <img
+              src="assets/EE5311_main_result.png"
+              alt="Aligned four-panel main result for the EE5311 pattern"
+            />
+            <figcaption>
+              <strong>Caption.</strong> Four aligned views of the target, the
+              rendered caustics, the learned height map, and the residual error
+              map. The optimized light pattern recovers the main structure of
+              the EE5311 target while keeping the surface profile smooth and
+              interpretable.
+            </figcaption>
+          </figure>
+        </section>
+
+        <section class="panel">
+          <div class="panel-head">
+            <p class="section-kicker">Dynamic View</p>
+            <h2>Optimization GIF</h2>
+          </div>
+          <div class="media-row">
+            <figure class="media-card media-card-wide">
+              <img
+                src="assets/EE5311_optimization.gif"
+                alt="Optimization GIF showing the light pattern gradually forming the EE5311 target"
+              />
+              <figcaption>
+                <strong>Caption.</strong> The light distribution progressively
+                contracts onto the target structure during optimization, making
+                the convergence trend easy to explain in a short presentation.
+              </figcaption>
+            </figure>
+          </div>
+        </section>
+
+        <section class="panel">
+          <div class="panel-head">
+            <p class="section-kicker">Interpretation</p>
+            <h2>Structure and Diagnostics</h2>
+          </div>
+          <div class="card-grid">
+            <figure class="media-card">
+              <img
+                src="assets/EE5311_surface_3d.png"
+                alt="3D surface of the optimized lens profile"
+              />
+              <figcaption>
+                <strong>Lens Surface.</strong> The optimized surface forms
+                smooth large-scale ridges and valleys rather than isolated
+                spikes, which is consistent with the TV regularizer and suggests
+                a physically meaningful refractive structure.
+              </figcaption>
+            </figure>
+
+            <figure class="media-card">
+              <img
+                src="assets/EE5311_difference_heatmap.png"
+                alt="Difference heatmap between the target and the rendered result"
+              />
+              <figcaption>
+                <strong>Error Map.</strong> The remaining errors are mainly
+                concentrated near thin strokes, boundaries, and corners,
+                indicating that the simplified model captures the global
+                structure better than the finest local details.
+              </figcaption>
+            </figure>
+
+            <figure class="media-card">
+              <img
+                src="assets/EE5311_loss_curve.png"
+                alt="Loss curve of the optimization process"
+              />
+              <figcaption>
+                <strong>Loss Curve.</strong> The loss decreases quickly in the
+                early stage and then gradually converges, which suggests that
+                the optimizer first establishes the coarse energy layout before
+                refining local details.
+              </figcaption>
+            </figure>
+          </div>
+        </section>
+
+        <section class="panel prose-panel">
+          <div class="panel-head">
+            <p class="section-kicker">Ready to Paste</p>
+            <h2>Report-ready Paragraph</h2>
+          </div>
+          <div class="prose-box">
+            <p>
+              With the learning rate set to 0.01, the caustic optimization is
+              able to recover the main strokes of the target pattern in a stable
+              way. The main result figure and the optimization GIF jointly show
+              that the solver first establishes the large-scale light
+              distribution and then progressively sharpens the target strokes.
+              The 3D surface figure indicates that the learned lens profile is a
+              continuous and interpretable refractive structure instead of
+              irregular noise. Meanwhile, the difference heatmap shows that the
+              residual errors mainly appear near edges and high-curvature
+              regions, which is consistent with the finite grid resolution,
+              Gaussian spot approximation, and simplified refraction model used
+              in this demo. Overall, the results support the central claim that
+              differentiable optimization can invert a desired caustic pattern
+              into a structured lens surface.
+            </p>
+          </div>
+        </section>
+
+        <section class="panel">
+          <div class="panel-head">
+            <p class="section-kicker">Supplementary</p>
+            <h2>Additional Patterns</h2>
+          </div>
+          <div class="card-grid">
+            <figure class="media-card">
+              <img
+                src="assets/GROUP23_main_result.png"
+                alt="Main result for the GROUP23 pattern"
+              />
+              <figcaption>
+                <strong>GROUP23.</strong> A supporting case showing that the
+                same optimization pipeline also reconstructs a denser pattern
+                with multi-region structure.
+              </figcaption>
+            </figure>
+            <figure class="media-card">
+              <img
+                src="assets/NUS_main_result.png"
+                alt="Main result for the NUS pattern"
+              />
+              <figcaption>
+                <strong>NUS.</strong> A second supporting case demonstrating
+                that the learned surface structure remains effective across a
+                different stroke arrangement.
+              </figcaption>
+            </figure>
+          </div>
+        </section>
+
+        <section class="panel">
+          <div class="panel-head">
+            <p class="section-kicker">Downloads</p>
+            <h2>Reference Notes</h2>
+          </div>
+          <div class="download-list">
+            <a href="assets/Task3_Result_Interpretation_EN_Concise.md">Concise English interpretation</a>
+            <a href="assets/Task3_Result_Interpretation_EN_Concise_with_CN.md">Concise English with Chinese translation</a>
+            <a href="assets/%E4%BB%BB%E5%8A%A13%E7%BB%93%E6%9E%9C%E8%AF%B4%E6%98%8E_%E4%B8%AD%E6%96%87.md">Chinese summary</a>
+          </div>
+        </section>
+      </main>
+
+      <footer class="footer">
+        <p>Prepared as a static GitHub Pages-ready deliverable.</p>
+      </footer>
+    </div>
+  </body>
+</html>
