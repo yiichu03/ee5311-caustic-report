@@ -157,7 +157,7 @@ main {
 }
 
 .hero-media {
-  width: min(100%, 980px);
+  width: min(100%, 860px);
   margin: 0 auto;
 }
 
@@ -182,7 +182,7 @@ main {
 }
 
 .media-card-wide img {
-  width: min(100%, 920px);
+  width: min(100%, 780px);
   margin: 0 auto;
 }
 

@@ -17,7 +17,7 @@
           <p class="eyebrow">EE5311 CA1 Blog — Group 23</p>
           <h1>Painting with Light</h1>
           <p class="hero-text">
-            This page follows the final report version,
+            This page follows the final blog version,
             <em>Differentiable Optics for Caustic Lens Design in PyTorch</em>.
             It summarizes the default experimental setup, the main visual
             results, and the most important conclusions from the results and
@@ -59,10 +59,9 @@
             <figcaption>
               <strong>Caption.</strong> Four aligned views of the target, the
               rendered caustics, the learned height map, and the residual error
-              map for the <code>EE5311</code> pattern. In the final report, this
-              case is described as clearly readable overall, with most of the
-              remaining deviation concentrated around finer corners and
-              boundaries.
+              map for the <code>EE5311</code> pattern. This case remains clearly
+              readable overall, with most of the remaining deviation
+              concentrated around finer corners and boundaries.
             </figcaption>
           </figure>
         </section>
@@ -81,9 +80,9 @@
               />
               <figcaption>
                 <strong>Caption.</strong> The optimization follows the same
-                trend emphasized in the report: rapid improvement in roughly the
-                first 25 to 50 epochs, followed by slower refinement as the
-                solver sharpens the target structure.
+                trend seen across the default experiments: rapid improvement in
+                roughly the first 25 to 50 epochs, followed by slower
+                refinement as the solver sharpens the target structure.
               </figcaption>
             </figure>
           </div>
@@ -101,10 +100,10 @@
                 alt="3D surface of the optimized lens profile"
               />
               <figcaption>
-                <strong>Lens Surface.</strong> The report interprets the 3D
-                surface as physically meaningful structure: broad ridges and
-                valleys in the height map correspond to the target strokes and
-                channel light toward the desired bright regions.
+                <strong>Lens Surface.</strong> The 3D surface shows physically
+                meaningful structure: broad ridges and valleys in the height
+                map correspond to the target strokes and channel light toward
+                the desired bright regions.
               </figcaption>
             </figure>
 
@@ -128,9 +127,9 @@
               />
               <figcaption>
                 <strong>Loss Curve.</strong> All three default-pattern
-                experiments show the same qualitative behavior reported in the
-                PDF: fast convergence early on, followed by gradual
-                refinement rather than abrupt late-stage changes.
+                experiments show the same qualitative behavior: fast
+                convergence early on, followed by gradual refinement rather than
+                abrupt late-stage changes.
               </figcaption>
             </figure>
           </div>
@@ -139,33 +138,32 @@
         <section class="panel">
           <div class="panel-head">
             <p class="section-kicker">Comparative Analysis</p>
-            <h2>Key Findings from the Report</h2>
+            <h2>Main Takeaways</h2>
           </div>
           <div class="insight-grid">
             <div class="insight-card">
               <h3>Resolution matters most</h3>
               <p>
-                The report identifies grid resolution as the dominant factor.
-                Higher <code>N</code> greatly improves reconstruction quality,
-                but the runtime cost rises sharply. The report therefore treats
-                <code>N = 64</code> as the practical quality-efficiency trade-off
-                for routine experiments.
+                Grid resolution is the dominant factor. Higher <code>N</code>
+                greatly improves reconstruction quality, but the runtime cost
+                rises sharply. For routine experiments, <code>N = 64</code>
+                offers the most reasonable quality-efficiency balance.
               </p>
             </div>
             <div class="insight-card">
               <h3>TV is supportive, not dominant</h3>
               <p>
                 Changing <code>λTV</code> within the tested range produces only
-                minor visual and numerical differences. The report keeps
-                <code>λTV = 0.01</code> as a reasonable default because it
-                preserves smoothness without noticeably restricting the solution.
+                minor visual and numerical differences. The default
+                <code>λTV = 0.01</code> keeps the surface smooth without
+                noticeably restricting the solution.
               </p>
             </div>
             <div class="insight-card">
               <h3>Broader Gaussian helps optimization</h3>
               <p>
-                The report finds that <code>σ = 0.06</code> outperforms narrower
-                kernels in this inverse problem setting. A slightly blurrier
+                <code>σ = 0.06</code> outperforms narrower kernels in this
+                inverse-problem setting. A slightly blurrier
                 forward renderer creates a smoother optimization landscape and
                 leads to better final convergence.
               </p>
@@ -175,12 +173,12 @@
 
         <section class="panel prose-panel">
           <div class="panel-head">
-            <p class="section-kicker">Ready to Paste</p>
-            <h2>Report-ready Paragraph</h2>
+            <p class="section-kicker">Summary</p>
+            <h2>Core Interpretation</h2>
           </div>
           <div class="prose-box">
             <p>
-              Under the default setting used in the report
+              Under the default setting
               (<code>N = 64</code>, <code>σ = 0.06</code>,
               <code>λTV = 0.01</code>, learning rate <code>0.01</code>, and
               <code>200</code> epochs), the optimizer learns height maps that
@@ -211,9 +209,9 @@
                 alt="Main result for the NUS pattern"
               />
               <figcaption>
-                <strong>NUS.</strong> In the final report, <code>NUS</code> is
-                identified as the most faithfully reproduced target because its
-                stroke structure is the simplest among the three default cases.
+                <strong>NUS.</strong> <code>NUS</code> is the most faithfully
+                reproduced target because its stroke structure is the simplest
+                among the three default cases.
               </figcaption>
             </figure>
             <figure class="media-card">
@@ -222,10 +220,10 @@
                 alt="Main result for the GROUP23 pattern"
               />
               <figcaption>
-                <strong>GROUP23.</strong> This is the most complex target in the
-                report, combining upper-case letters, a circular element, and
-                digits. The pattern remains recognizable, but it shows more
-                deviation than the simpler cases.
+                <strong>GROUP23.</strong> This is the most complex target,
+                combining upper-case letters, a circular element, and digits.
+                The pattern remains recognizable, but it shows more deviation
+                than the simpler cases.
               </figcaption>
             </figure>
           </div>
