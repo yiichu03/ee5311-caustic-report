@@ -3,10 +3,10 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>EE5311 Caustic Lens Design</title>
+    <title>Painting with Light | EE5311 Group 23</title>
     <meta
       name="description"
-      content="Static deliverable page for EE5311 caustic lens optimization results."
+      content="Report-aligned static page for EE5311 Group 23 caustic lens design results."
     />
     <link rel="stylesheet" href="styles.css" />
   </head>
@@ -14,31 +14,32 @@
     <div class="page-shell">
       <header class="hero">
         <div class="hero-copy">
-          <p class="eyebrow">EE5311 CA1 Deliverable Page</p>
-          <h1>Caustic Lens Optimization</h1>
+          <p class="eyebrow">EE5311 CA1 Blog — Group 23</p>
+          <h1>Painting with Light</h1>
           <p class="hero-text">
-            A compact result page for presenting the final images, optimization
-            GIF, captions, and the report-ready interpretation paragraph. This
-            version keeps close to the original teammate logic while extending
-            the training to a more presentation-ready result set.
+            This page follows the final report version,
+            <em>Differentiable Optics for Caustic Lens Design in PyTorch</em>.
+            It summarizes the default experimental setup, the main visual
+            results, and the most important conclusions from the results and
+            discussion sections.
           </p>
         </div>
         <div class="hero-meta">
           <div class="meta-card">
-            <span class="meta-label">Focus Pattern</span>
+            <span class="meta-label">Default Setup</span>
+            <strong>N = 64, σ = 0.06</strong>
+          </div>
+          <div class="meta-card">
+            <span class="meta-label">Optimization</span>
+            <strong>lr = 0.01, epochs = 200</strong>
+          </div>
+          <div class="meta-card">
+            <span class="meta-label">Regularization</span>
+            <strong>λTV = 0.01, decay ×0.8 / 50 epochs</strong>
+          </div>
+          <div class="meta-card">
+            <span class="meta-label">Primary Example</span>
             <strong>EE5311</strong>
-          </div>
-          <div class="meta-card">
-            <span class="meta-label">Resolution</span>
-            <strong>N = 64</strong>
-          </div>
-          <div class="meta-card">
-            <span class="meta-label">Epochs</span>
-            <strong>300</strong>
-          </div>
-          <div class="meta-card">
-            <span class="meta-label">Parameters</span>
-            <strong>lr = 0.01, TV = 0.01</strong>
           </div>
         </div>
       </header>
@@ -58,9 +59,10 @@
             <figcaption>
               <strong>Caption.</strong> Four aligned views of the target, the
               rendered caustics, the learned height map, and the residual error
-              map. The optimized light pattern recovers the main structure of
-              the EE5311 target while keeping the surface profile smooth and
-              interpretable.
+              map for the <code>EE5311</code> pattern. In the final report, this
+              case is described as clearly readable overall, with most of the
+              remaining deviation concentrated around finer corners and
+              boundaries.
             </figcaption>
           </figure>
         </section>
@@ -78,9 +80,10 @@
                 alt="Optimization GIF showing the light pattern gradually forming the EE5311 target"
               />
               <figcaption>
-                <strong>Caption.</strong> The light distribution progressively
-                contracts onto the target structure during optimization, making
-                the convergence trend easy to explain in a short presentation.
+                <strong>Caption.</strong> The optimization follows the same
+                trend emphasized in the report: rapid improvement in roughly the
+                first 25 to 50 epochs, followed by slower refinement as the
+                solver sharpens the target structure.
               </figcaption>
             </figure>
           </div>
@@ -98,10 +101,10 @@
                 alt="3D surface of the optimized lens profile"
               />
               <figcaption>
-                <strong>Lens Surface.</strong> The optimized surface forms
-                smooth large-scale ridges and valleys rather than isolated
-                spikes, which is consistent with the TV regularizer and suggests
-                a physically meaningful refractive structure.
+                <strong>Lens Surface.</strong> The report interprets the 3D
+                surface as physically meaningful structure: broad ridges and
+                valleys in the height map correspond to the target strokes and
+                channel light toward the desired bright regions.
               </figcaption>
             </figure>
 
@@ -111,10 +114,10 @@
                 alt="Difference heatmap between the target and the rendered result"
               />
               <figcaption>
-                <strong>Error Map.</strong> The remaining errors are mainly
-                concentrated near thin strokes, boundaries, and corners,
-                indicating that the simplified model captures the global
-                structure better than the finest local details.
+                <strong>Error Map.</strong> The normalized difference map is
+                most useful for spotting where fine detail is lost. For
+                <code>EE5311</code>, the visible mismatch is most noticeable
+                around fine corners, narrow gaps, and stroke boundaries.
               </figcaption>
             </figure>
 
@@ -124,12 +127,49 @@
                 alt="Loss curve of the optimization process"
               />
               <figcaption>
-                <strong>Loss Curve.</strong> The loss decreases quickly in the
-                early stage and then gradually converges, which suggests that
-                the optimizer first establishes the coarse energy layout before
-                refining local details.
+                <strong>Loss Curve.</strong> All three default-pattern
+                experiments show the same qualitative behavior reported in the
+                PDF: fast convergence early on, followed by gradual
+                refinement rather than abrupt late-stage changes.
               </figcaption>
             </figure>
+          </div>
+        </section>
+
+        <section class="panel">
+          <div class="panel-head">
+            <p class="section-kicker">Comparative Analysis</p>
+            <h2>Key Findings from the Report</h2>
+          </div>
+          <div class="insight-grid">
+            <div class="insight-card">
+              <h3>Resolution matters most</h3>
+              <p>
+                The report identifies grid resolution as the dominant factor.
+                Higher <code>N</code> greatly improves reconstruction quality,
+                but the runtime cost rises sharply. The report therefore treats
+                <code>N = 64</code> as the practical quality-efficiency trade-off
+                for routine experiments.
+              </p>
+            </div>
+            <div class="insight-card">
+              <h3>TV is supportive, not dominant</h3>
+              <p>
+                Changing <code>λTV</code> within the tested range produces only
+                minor visual and numerical differences. The report keeps
+                <code>λTV = 0.01</code> as a reasonable default because it
+                preserves smoothness without noticeably restricting the solution.
+              </p>
+            </div>
+            <div class="insight-card">
+              <h3>Broader Gaussian helps optimization</h3>
+              <p>
+                The report finds that <code>σ = 0.06</code> outperforms narrower
+                kernels in this inverse problem setting. A slightly blurrier
+                forward renderer creates a smoother optimization landscape and
+                leads to better final convergence.
+              </p>
+            </div>
           </div>
         </section>
 
@@ -140,20 +180,21 @@
           </div>
           <div class="prose-box">
             <p>
-              With the learning rate set to 0.01, the caustic optimization is
-              able to recover the main strokes of the target pattern in a stable
-              way after 300 epochs. The main result figure and the optimization
-              GIF jointly show that the solver first establishes the large-scale
-              light distribution and then progressively sharpens the target
-              strokes. The 3D surface figure indicates that the learned lens
-              profile is a continuous and interpretable refractive structure
-              instead of irregular noise. Meanwhile, the difference heatmap
-              shows that the residual errors mainly appear near edges and
-              high-curvature regions, which is consistent with the finite grid
-              resolution, Gaussian spot approximation, and simplified refraction
-              model used in this demo. Overall, the results support the central
-              claim that differentiable optimization can invert a desired
-              caustic pattern into a structured lens surface.
+              Under the default setting used in the report
+              (<code>N = 64</code>, <code>σ = 0.06</code>,
+              <code>λTV = 0.01</code>, learning rate <code>0.01</code>, and
+              <code>200</code> epochs), the optimizer learns height maps that
+              produce recognizable caustic patterns for all three targets.
+              <code>NUS</code>, with its simpler strokes, is reproduced most
+              faithfully. <code>EE5311</code> remains clearly readable but shows
+              more blur around fine corners, while <code>GROUP23</code> is the
+              most complex case and therefore shows the largest deviation from
+              the target. Across all three patterns, the loss curves exhibit
+              rapid convergence in the first 25 to 50 epochs and then enter a
+              slower refinement stage. The 3D surface plots reveal structured
+              ridges and valleys in the height map, which directly correspond to
+              target strokes and help channel light toward the desired bright
+              regions.
             </p>
           </div>
         </section>
@@ -166,24 +207,25 @@
           <div class="card-grid">
             <figure class="media-card">
               <img
-                src="assets/GROUP23_main_result.png"
-                alt="Main result for the GROUP23 pattern"
-              />
-              <figcaption>
-                <strong>GROUP23.</strong> A supporting case showing that the
-                same optimization pipeline also reconstructs a denser pattern
-                with multi-region structure.
-              </figcaption>
-            </figure>
-            <figure class="media-card">
-              <img
                 src="assets/NUS_main_result.png"
                 alt="Main result for the NUS pattern"
               />
               <figcaption>
-                <strong>NUS.</strong> A second supporting case demonstrating
-                that the learned surface structure remains effective across a
-                different stroke arrangement.
+                <strong>NUS.</strong> In the final report, <code>NUS</code> is
+                identified as the most faithfully reproduced target because its
+                stroke structure is the simplest among the three default cases.
+              </figcaption>
+            </figure>
+            <figure class="media-card">
+              <img
+                src="assets/GROUP23_main_result.png"
+                alt="Main result for the GROUP23 pattern"
+              />
+              <figcaption>
+                <strong>GROUP23.</strong> This is the most complex target in the
+                report, combining upper-case letters, a circular element, and
+                digits. The pattern remains recognizable, but it shows more
+                deviation than the simpler cases.
               </figcaption>
             </figure>
           </div>
